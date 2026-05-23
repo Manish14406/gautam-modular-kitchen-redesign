@@ -1,0 +1,290 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root, .dark {
+  /* Premium Dark Luxury color palette for Gautam Modular Kitchen */
+  --rose-gold: #E4B4B4;
+  --metallic-silver: #CBD5E1;
+  --deep-charcoal: #0B0E14;
+
+  --background: #0B0E14;
+  --foreground: #FFFFFF;
+  --primary: #E4B4B4; /* Rose Gold */
+  --primary-foreground: #0B0E14;
+  --sidebar-primary: #E4B4B4;
+  --sidebar-primary-foreground: #0B0E14;
+  --radius: 0.5rem;
+  
+  --card: rgba(255, 255, 255, 0.03);
+  --card-foreground: #FFFFFF;
+  --popover: #0B0E14;
+  --popover-foreground: #FFFFFF;
+  --secondary: #CBD5E1; /* Metallic Silver */
+  --secondary-foreground: #0B0E14;
+  --muted: #171B24;
+  --muted-foreground: #94A3B8;
+  --accent: #E4B4B4; /* Rose Gold */
+  --accent-foreground: #0B0E14;
+  --destructive: #DC2626;
+  --destructive-foreground: #FFFFFF;
+  --border: rgba(255, 255, 255, 0.08);
+  --input: rgba(255, 255, 255, 0.05);
+  --ring: #E4B4B4;
+  
+  --sidebar: #0B0E14;
+  --sidebar-foreground: #FFFFFF;
+  --sidebar-accent: #E4B4B4;
+  --sidebar-accent-foreground: #0B0E14;
+  --sidebar-border: rgba(255, 255, 255, 0.08);
+  --sidebar-ring: #E4B4B4;
+
+  --chart-1: #E4B4B4;
+  --chart-2: #CBD5E1;
+  --chart-3: #FFFFFF;
+  --chart-4: #F472B6;
+  --chart-5: #38BDF8;
+}
+
+/* Custom premium classes */
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.text-rose-gold { color: var(--rose-gold); }
+.bg-rose-gold { background-color: var(--rose-gold); }
+.border-rose-gold { border-color: var(--rose-gold); }
+.text-silver { color: var(--metallic-silver); }
+
+.glow-rose {
+  box-shadow: 0 0 20px rgba(228, 180, 180, 0.2);
+}
+
+.glow-silver {
+  box-shadow: 0 0 20px rgba(203, 213, 225, 0.15);
+}
+
+.light-leak {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  filter: blur(120px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.light-leak-rose {
+  background: radial-gradient(circle, rgba(228, 180, 180, 0.08) 0%, rgba(228, 180, 180, 0) 70%);
+}
+
+.light-leak-navy {
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.05) 0%, rgba(56, 189, 248, 0) 70%);
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+    background-color: var(--deep-charcoal);
+    font-family: 'Satoshi', 'General Sans', sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Satoshi', 'General Sans', sans-serif;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+  }
+  h1 {
+    @apply text-5xl md:text-6xl;
+    line-height: 1.1;
+  }
+  h2 {
+    @apply text-4xl md:text-5xl;
+    line-height: 1.15;
+  }
+  h3 {
+    @apply text-2xl md:text-3xl;
+    line-height: 1.2;
+  }
+  p {
+    line-height: 1.7;
+    letter-spacing: 0.3px;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  /**
+   * Custom container utility that centers content and adds responsive padding.
+   *
+   * This overrides Tailwind's default container behavior to:
+   * - Auto-center content (mx-auto)
+   * - Add responsive horizontal padding
+   * - Set max-width for large screens
+   *
+   * Usage: <div className="container">...</div>
+   *
+   * For custom widths, use max-w-* utilities directly:
+   * <div className="max-w-6xl mx-auto px-4">...</div>
+   */
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem; /* 16px - mobile padding */
+    padding-right: 1rem;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem; /* 24px - tablet padding */
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem; /* 32px - desktop padding */
+      padding-right: 2rem;
+      max-width: 1280px; /* Standard content width */
+    }
+  }
+
+  /* Premium button styling */
+  .btn-primary {
+    @apply px-8 py-3 rounded-sm font-medium transition-all duration-300 ease-out bg-primary text-primary-foreground active:scale-95;
+    letter-spacing: 0.5px;
+  }
+  
+  .btn-primary:hover {
+    opacity: 0.9;
+  }
+
+  .btn-secondary {
+    @apply px-8 py-3 rounded-sm font-medium transition-all duration-300 ease-out bg-secondary text-secondary-foreground active:scale-95;
+    letter-spacing: 0.5px;
+  }
+  
+  .btn-secondary:hover {
+    opacity: 0.9;
+  }
+
+  .btn-outline {
+    @apply px-8 py-3 rounded-sm font-medium transition-all duration-300 ease-out border-2 border-primary text-primary;
+    letter-spacing: 0.5px;
+  }
+  
+  .btn-outline:hover {
+    @apply bg-primary text-primary-foreground;
+  }
+
+
+  /* Premium section spacing */
+  .section-padding {
+    @apply py-20 md:py-32 lg:py-40;
+  }
+
+  /* Elegant divider */
+  .divider-gold {
+    @apply h-1 w-12 bg-accent rounded-full;
+  }
+
+  /* Fade-in animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out;
+  }
+
+  /* Slide up animation */
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out;
+  }
+}
