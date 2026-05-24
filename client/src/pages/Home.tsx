@@ -1,26 +1,14 @@
-import { Card } from "@/components/ui/card";
 import { ChevronRight, Phone, MessageCircle, MapPin, Clock, Mail, Star } from "lucide-react";
 import { useState, useEffect } from "react";
 import PremiumHero from "@/components/PremiumHero";
 import { OptimizedImage } from "@/components/ui/OptimizedImage";
-
-/**
- * Design Philosophy: Dark Luxury, Elegant Minimalism with Sophisticated Restraint
- * - Generous dark space and breathing room throughout (Deep Charcoal #0B0E14)
- * - Refined typography with Satoshi and General Sans font-families
- * - Custom rose-gold accents (#E4B4B4) and metallic-silver details (#CBD5E1)
- * - Glassmorphic cards and glowing elements
- * - Dynamic scroll behaviors and interactive states
- */
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState("kitchens");
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -32,7 +20,7 @@ export default function Home() {
       { name: "Island Kitchen", image: "/images/island_kitchen.webp" },
       { name: "Parallel Kitchen", image: "/images/parallel_kitchen.webp" },
       { name: "Galley Kitchen", image: "/images/hero_luxury_kitchen.webp" },
-      { name: "Open Kitchen", image: "/images/open_kitchen.webp" }
+      { name: "Open Kitchen", image: "/images/open_kitchen.webp" },
     ],
     finishes: [
       { name: "Acrylic Finish", image: "/images/l_shaped_kitchen.webp" },
@@ -40,7 +28,7 @@ export default function Home() {
       { name: "Waterproof Finish", image: "/images/parallel_kitchen.webp" },
       { name: "Matte Finish", image: "/images/hero_luxury_kitchen.webp" },
       { name: "Glossy Finish", image: "/images/open_kitchen.webp" },
-      { name: "Wood Finish", image: "/images/island_kitchen.webp" }
+      { name: "Wood Finish", image: "/images/island_kitchen.webp" },
     ],
     layouts: [
       { name: "Modular Design", image: "/images/parallel_kitchen.webp" },
@@ -48,8 +36,8 @@ export default function Home() {
       { name: "Space Optimization", image: "/images/l_shaped_kitchen.webp" },
       { name: "Premium Hardware", image: "/images/island_kitchen.webp" },
       { name: "Smart Storage", image: "/images/hero_luxury_kitchen.webp" },
-      { name: "Integrated Appliances", image: "/images/open_kitchen.webp" }
-    ]
+      { name: "Integrated Appliances", image: "/images/open_kitchen.webp" },
+    ],
   };
 
   const projectGallery = [
@@ -58,278 +46,146 @@ export default function Home() {
     "/images/island_kitchen.webp",
     "/images/parallel_kitchen.webp",
     "/images/open_kitchen.webp",
-    "/images/island_kitchen.webp"
+    "/images/island_kitchen.webp",
   ];
 
   return (
-    <div className="min-h-screen bg-[#0B0E14] text-white overflow-x-hidden font-sans">
-      {/* Navigation */}
-      <nav className={`fixed top-0 w-full z-50 transition-all duration-500 border-b ${scrolled ? "bg-[#0B0E14]/90 backdrop-blur-md border-white/5 py-4" : "bg-transparent border-white/0 py-6"}`}>
-        <div className="container flex items-center justify-between max-w-7xl mx-auto px-6">
-          <div className="flex items-center gap-3">
-            <span className="text-xl font-black tracking-tighter uppercase text-white">
-              Gautam <span className="text-rose-gold">Modular</span>
-            </span>
-          </div>
-          
-          <div className="hidden md:flex gap-10 text-xs font-semibold uppercase tracking-[0.2em] text-silver">
-            <a href="#about" className="hover:text-rose-gold transition-colors duration-300">The Studio</a>
-            <a href="#services" className="hover:text-rose-gold transition-colors duration-300">Services</a>
-            <a href="#gallery" className="hover:text-rose-gold transition-colors duration-300">Collections</a>
-            <a href="#process" className="hover:text-rose-gold transition-colors duration-300">Mastery</a>
-            <a href="#contact" className="hover:text-rose-gold transition-colors duration-300">Contact</a>
-          </div>
+    <div className="min-h-screen bg-[#050505] text-white overflow-x-hidden" style={{ fontFamily: "'General Sans', sans-serif" }}>
 
-          <a 
-            href="#contact" 
-            className="px-6 py-3 bg-white text-black text-[10px] font-black uppercase tracking-widest hover:bg-rose-gold transition-all duration-500 rounded-none"
-          >
+      {/* ── NAVIGATION ── */}
+      <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 px-6 md:px-10 mix-blend-difference ${scrolled ? "py-4 bg-[#050505]/80 backdrop-blur-md" : "py-6"}`}>
+        <div className="flex items-center justify-between max-w-[1440px] mx-auto">
+          <div className="flex items-center gap-3">
+            <div className="w-2.5 h-2.5 bg-rose-500 rounded-full animate-pulse" />
+            <span className="text-lg font-black tracking-tighter uppercase text-white">Gautam Modular</span>
+          </div>
+          <div className="hidden md:flex items-center gap-10">
+            {["#about", "#services", "#gallery", "#process", "#contact"].map((href, i) => (
+              <a key={i} href={href} className="text-xs font-bold uppercase tracking-widest text-white hover:text-gray-400 transition-colors">
+                {["Studio", "Services", "Collections", "Process", "Contact"][i]}
+              </a>
+            ))}
+          </div>
+          <a href="#contact" className="px-5 py-2 rounded-full bg-white text-black text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-transform">
             Book a Visit
           </a>
         </div>
       </nav>
 
-      {/* Premium Hero Section */}
+      {/* ── HERO ── */}
       <PremiumHero />
 
-      {/* About Section */}
-      <section id="about" className="section-padding bg-[#0B0E14] border-t border-white/5">
-        <div className="container max-w-7xl mx-auto px-6">
-          <div className="max-w-4xl mx-auto space-y-12">
-            <div className="text-center space-y-4">
-              <div className="flex justify-center">
-                <div className="w-12 h-1 bg-rose-gold rounded-full"></div>
+      {/* ── ABOUT ── */}
+      <section id="about" className="py-24 md:py-40 px-6 md:px-12 bg-[#050505] border-t border-white/5">
+        <div className="max-w-[90rem] mx-auto">
+          <div className="mb-12">
+            <h2 className="cinema-heading text-white mb-4">About<br />Our Studio</h2>
+            <div className="cinema-accent-line" />
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            <div className="space-y-6 text-slate-400 font-light leading-relaxed text-base sm:text-lg">
+              <p className="text-xl text-rose-300 font-medium">At Gautam Modular Kitchen, we don't just build kitchens — we create intelligent living spaces that become the heart of every home.</p>
+              <p>Born from a passion for craftsmanship, innovation, and timeless design, Gautam Modular Kitchen has grown into a trusted name in premium modular interiors.</p>
+              <p><strong className="text-white">We believe a kitchen is more than cabinets and countertops.</strong> It is where conversations begin, families unite, and memories are created for generations.</p>
+              <p>From luxurious modular kitchens to sophisticated wardrobes and customized interior solutions, our team combines cutting-edge technology with master craftsmanship.</p>
+              <p className="text-xl text-rose-300 italic">We are not simply creating kitchens. We are shaping experiences, elevating lifestyles, and building spaces people love to come home to.</p>
+            </div>
+            <div className="space-y-6">
+              <div className="grayscale-hover rounded-2xl overflow-hidden border border-white/10 group">
+                <OptimizedImage
+                  src="/images/open_kitchen.webp"
+                  alt="Showroom"
+                  containerClassName="w-full h-[400px]"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700"
+                />
               </div>
-              <h2 className="text-white text-3xl md:text-4xl font-black uppercase tracking-wider">About Our Studio</h2>
-            </div>
-            
-            <div className="space-y-6 text-base sm:text-lg text-slate-400 font-light leading-relaxed">
-              <p className="font-medium text-xl text-rose-gold text-center pb-4 leading-snug">
-                At Gautam Modular Kitchen, we don’t just build kitchens — we create intelligent living spaces that become the heart of every home.
-              </p>
-              
-              <p>
-                Born from a passion for craftsmanship, innovation, and timeless design, Gautam Modular Kitchen has grown into a trusted name in premium modular interiors. Every project we undertake is a reflection of precision engineering, modern aesthetics, and a deep understanding of how people truly live, cook, gather, and connect.
-              </p>
-              
-              <p>
-                <strong className="text-white font-bold">We believe a kitchen is more than cabinets and countertops.</strong> It is where conversations begin, families unite, celebrations happen, and memories are created for generations. That belief drives us to design spaces that are not only visually stunning, but also highly functional, durable, and personalized to every lifestyle.
-              </p>
-              
-              <p>
-                From luxurious modular kitchens to sophisticated wardrobes and customized interior solutions, our team combines cutting-edge technology with master craftsmanship to deliver spaces that inspire everyday living. Every detail — from material selection to finishing touches — is executed with uncompromising quality standards.
-              </p>
-              
-              <p>
-                <strong className="text-white font-bold">What makes Gautam Modular Kitchen different is our obsession with perfection.</strong> We blend contemporary global trends with practical Indian living requirements, creating interiors that are elegant, efficient, and built to last. Our designs are thoughtfully planned to maximize space, enhance comfort, and elevate the overall experience of your home.
-              </p>
-            </div>
-
-            <div className="pt-8 border-t border-white/5">
-              <h3 className="text-2xl font-bold text-white mb-8 text-center uppercase tracking-wider">Why Clients Trust Us</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {[
-                  "Bespoke designs tailored to individual lifestyles",
-                  "Premium-quality materials and hardware",
-                  "Precision manufacturing and flawless execution",
-                  "Innovative storage and smart space solutions",
-                  "Transparent process and customer-first approach",
-                  "Commitment to durability, functionality, and luxury"
-                ].map((item, idx) => (
-                  <div key={idx} className="flex items-start gap-4 p-4 glass rounded-xl border-white/5">
-                    <div className="w-2.5 h-2.5 mt-2 rounded-full bg-rose-gold flex-shrink-0"></div>
-                    <p className="text-slate-300 font-light text-sm sm:text-base">{item}</p>
+              <div className="grid grid-cols-2 gap-4">
+                {[{ n: "500+", l: "Projects" }, { n: "15+", l: "Years" }, { n: "100%", l: "Satisfaction" }, { n: "24/7", l: "Support" }].map((s, i) => (
+                  <div key={i} className="p-6 border border-white/10 bg-white/5 rounded-2xl">
+                    <p className="text-3xl font-black text-white">{s.n}</p>
+                    <p className="text-xs uppercase tracking-widest text-gray-500 mt-1">{s.l}</p>
                   </div>
                 ))}
               </div>
             </div>
+          </div>
 
-            <div className="space-y-6 text-base sm:text-lg text-slate-400 font-light leading-relaxed pt-8 border-t border-white/5 text-center">
-              <p>
-                At Gautam Modular Kitchen, every project is a partnership built on trust, creativity, and excellence. Whether it is a modern urban apartment, a luxury villa, or a commercial space, we bring vision, sophistication, and craftsmanship together to transform interiors into masterpieces.
-              </p>
-              <p className="text-xl font-medium text-rose-gold italic leading-snug">
-                We are not simply creating kitchens. We are shaping experiences, elevating lifestyles, and building spaces people love to come home to.
-              </p>
-              <p className="text-2xl font-black text-white uppercase tracking-wider pt-6">
-                Gautam Modular Kitchen <br />
-                <span className="text-sm font-semibold text-rose-gold tracking-[0.25em]">Crafted for Living. Designed for Life</span>
-              </p>
-            </div>
-
-            <div className="pt-12 relative group">
-              <div className="absolute -inset-2 bg-gradient-to-tr from-rose-gold/10 via-transparent to-blue-500/5 blur-xl opacity-50 group-hover:opacity-100 transition-opacity duration-700"></div>
-              <OptimizedImage
-                src="/images/open_kitchen.webp"
-                alt="Showroom"
-                containerClassName="w-full h-[450px] rounded-2xl border border-white/10 glow-silver shadow-2xl"
-                className="grayscale-[0.2] group-hover:grayscale-0 group-hover:scale-[1.01] transition-all duration-700"
-              />
+          {/* Why Clients Trust Us */}
+          <div className="mt-20">
+            <h3 className="text-2xl font-black uppercase tracking-widest text-white mb-8">Why Clients Trust Us</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {["Bespoke designs tailored to individual lifestyles","Premium-quality materials and hardware","Precision manufacturing and flawless execution","Innovative storage and smart space solutions","Transparent process and customer-first approach","Commitment to durability, functionality, and luxury"].map((item, idx) => (
+                <div key={idx} className={`flex items-start gap-4 p-5 border border-white/10 rounded-2xl bg-white/5 ${idx % 2 === 0 ? "antigravity" : "antigravity-alt"}`}>
+                  <div className="w-2 h-2 mt-2 rounded-full bg-rose-400 flex-shrink-0" />
+                  <p className="text-slate-300 text-sm font-light">{item}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Services Section */}
-      <section id="services" className="section-padding bg-[#0B0E14] border-t border-white/5">
-        <div className="container max-w-7xl mx-auto px-6">
-          <div className="text-center space-y-4 mb-16">
-            <div className="flex justify-center">
-              <div className="w-12 h-1 bg-rose-gold rounded-full"></div>
-            </div>
-            <h2 className="text-white text-3xl md:text-4xl font-black uppercase tracking-wider">Our Services</h2>
-            <p className="text-base text-slate-400 max-w-2xl mx-auto font-light">
-              Comprehensive interior solutions tailored to your needs and lifestyle
-            </p>
+      {/* ── SERVICES ── */}
+      <section id="services" className="py-24 md:py-40 px-6 md:px-12 bg-[#0a0a0a] border-t border-white/5">
+        <div className="max-w-[90rem] mx-auto">
+          <div className="mb-12">
+            <h2 className="cinema-heading text-white mb-4">Our<br />Services</h2>
+            <div className="cinema-accent-line" />
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
             {[
-              { title: "Modular Kitchens", desc: "Custom-designed kitchens with premium finishes" },
-              { title: "Wardrobes", desc: "Floor-to-ceiling storage solutions" },
-              { title: "TV Units", desc: "Entertainment centers with integrated storage" },
-              { title: "Crockery Units", desc: "Elegant display and storage solutions" },
-              { title: "Office Furniture", desc: "Professional workspace solutions" },
-              { title: "False Ceiling", desc: "Modern ceiling designs with integrated lighting" },
+              { title: "Modular Kitchens", desc: "Custom-designed kitchens with premium finishes", num: "01" },
+              { title: "Wardrobes", desc: "Floor-to-ceiling storage solutions", num: "02" },
+              { title: "TV Units", desc: "Entertainment centers with integrated storage", num: "03" },
+              { title: "Crockery Units", desc: "Elegant display and storage solutions", num: "04" },
+              { title: "Office Furniture", desc: "Professional workspace solutions", num: "05" },
+              { title: "False Ceiling", desc: "Modern ceiling designs with integrated lighting", num: "06" },
             ].map((service, idx) => (
-              <Card key={idx} className="p-8 glass rounded-2xl border border-white/5 hover:border-rose-gold/30 hover:glow-rose transition-all duration-500 group cursor-pointer text-left bg-transparent">
-                <div className="space-y-4">
-                  <h3 className="text-xl font-bold text-white group-hover:text-rose-gold transition-colors duration-300 uppercase tracking-wide">
-                    {service.title}
-                  </h3>
-                  <p className="text-slate-400 font-light text-sm sm:text-base leading-relaxed">{service.desc}</p>
-                  <button className="text-rose-gold font-bold text-xs uppercase tracking-widest flex items-center gap-2 hover:gap-3 transition-all duration-300">
-                    Explore <ChevronRight size={14} />
-                  </button>
-                </div>
-              </Card>
+              <div key={idx} className={`group p-8 border border-white/10 bg-[#111111] rounded-2xl hover:border-rose-300/30 transition-all duration-500 cursor-pointer ${idx % 2 === 0 ? "antigravity" : "antigravity-alt"}`}>
+                <p className="text-[10px] font-black uppercase tracking-[0.3em] text-gray-600 mb-6">{service.num}</p>
+                <h3 className="text-xl font-black uppercase tracking-tight text-white mb-3 group-hover:text-rose-300 transition-colors">{service.title}</h3>
+                <p className="text-slate-500 text-sm font-light leading-relaxed mb-6">{service.desc}</p>
+                <button className="text-rose-300 font-bold text-xs uppercase tracking-widest flex items-center gap-2 group-hover:gap-3 transition-all">
+                  Explore <ChevronRight size={14} />
+                </button>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Kitchen Types Section */}
-      <section className="section-padding bg-[#0B0E14] border-t border-white/5">
-        <div className="container max-w-7xl mx-auto px-6">
-          <div className="text-center space-y-4 mb-16">
-            <div className="flex justify-center">
-              <div className="w-12 h-1 bg-rose-gold rounded-full"></div>
-            </div>
-            <h2 className="text-white text-3xl md:text-4xl font-black uppercase tracking-wider">Kitchen Collections</h2>
-            <p className="text-base text-slate-400 max-w-2xl mx-auto font-light">
-              Explore our diverse range of kitchen designs and finishes
-            </p>
+      {/* ── KITCHEN COLLECTIONS ── */}
+      <section className="py-24 md:py-40 px-6 md:px-12 bg-[#050505] border-t border-white/5">
+        <div className="max-w-[90rem] mx-auto">
+          <div className="mb-12">
+            <h2 className="cinema-heading text-white mb-4">Kitchen<br />Collections</h2>
+            <div className="cinema-accent-line" />
           </div>
-
-          {/* Tabs */}
-          <div className="flex justify-center gap-4 mb-12 flex-wrap">
+          <div className="flex flex-wrap gap-3 my-12">
             {["kitchens", "finishes", "layouts"].map((tab) => (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`px-8 py-3 font-black text-xs uppercase tracking-[0.25em] transition-all duration-300 rounded-none cursor-pointer ${
-                  activeTab === tab
-                    ? "bg-rose-gold text-black glow-rose"
-                    : "bg-white/5 text-silver border border-white/10 hover:border-rose-gold/50"
-                }`}
-              >
+              <button key={tab} onClick={() => setActiveTab(tab)}
+                className={`px-8 py-3 text-xs font-black uppercase tracking-[0.25em] transition-all duration-300 rounded-full cursor-pointer border ${activeTab === tab ? "bg-white text-black border-white" : "border-white/20 text-gray-400 hover:border-white/50"}`}>
                 {tab}
               </button>
             ))}
           </div>
-
-          {/* Kitchen Collections Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {activeTab === "kitchens" && (
-              <>
-                {kitchenCollections.kitchens.map((item, idx) => (
-                  <div key={idx} className="relative h-72 rounded-2xl overflow-hidden group cursor-pointer border border-white/10 glow-silver bg-[#171B24]">
-                    <OptimizedImage 
-                      src={item.image} 
-                      alt={item.name} 
-                      containerClassName="absolute inset-0 w-full h-full"
-                      className="grayscale-[0.2] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" 
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0B0E14]/90 via-[#0B0E14]/40 to-transparent"></div>
-                    <div className="absolute bottom-6 left-6 right-6 text-left">
-                      <p className="text-white font-bold text-lg tracking-tight uppercase">{item.name}</p>
-                      <span className="text-[10px] text-rose-gold font-bold uppercase tracking-widest">Explore Concept</span>
-                    </div>
+            {kitchenCollections[activeTab as keyof typeof kitchenCollections].map((item, idx) => (
+              <div key={idx} className={`group relative rounded-2xl overflow-hidden border border-white/10 bg-[#111111] grayscale-hover cursor-pointer ${idx % 2 === 0 ? "antigravity-alt" : "antigravity"}`}>
+                <div className="px-4 py-2.5 flex gap-1.5 border-b border-white/5 bg-white/5">
+                  <div className="w-2.5 h-2.5 rounded-full bg-red-500" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-yellow-500" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-green-500" />
+                </div>
+                <div className="h-56 overflow-hidden">
+                  <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+                </div>
+                <div className="p-6 flex justify-between items-center">
+                  <div>
+                    <p className="text-[10px] font-black uppercase tracking-widest text-rose-300 mb-1">Project {String(idx + 1).padStart(2, "0")}</p>
+                    <h3 className="text-lg font-black uppercase tracking-tight text-white">{item.name}</h3>
                   </div>
-                ))}
-              </>
-            )}
-            {activeTab === "finishes" && (
-              <>
-                {kitchenCollections.finishes.map((item, idx) => (
-                  <div key={idx} className="relative h-72 rounded-2xl overflow-hidden group cursor-pointer border border-white/10 glow-silver bg-[#171B24]">
-                    <OptimizedImage 
-                      src={item.image} 
-                      alt={item.name} 
-                      containerClassName="absolute inset-0 w-full h-full"
-                      className="grayscale-[0.2] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" 
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0B0E14]/90 via-[#0B0E14]/40 to-transparent"></div>
-                    <div className="absolute bottom-6 left-6 right-6 text-left">
-                      <p className="text-white font-bold text-lg tracking-tight uppercase">{item.name}</p>
-                      <span className="text-[10px] text-rose-gold font-bold uppercase tracking-widest">Explore Finish</span>
-                    </div>
-                  </div>
-                ))}
-              </>
-            )}
-            {activeTab === "layouts" && (
-              <>
-                {kitchenCollections.layouts.map((item, idx) => (
-                  <div key={idx} className="relative h-72 rounded-2xl overflow-hidden group cursor-pointer border border-white/10 glow-silver bg-[#171B24]">
-                    <OptimizedImage 
-                      src={item.image} 
-                      alt={item.name} 
-                      containerClassName="absolute inset-0 w-full h-full"
-                      className="grayscale-[0.2] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" 
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0B0E14]/90 via-[#0B0E14]/40 to-transparent"></div>
-                    <div className="absolute bottom-6 left-6 right-6 text-left">
-                      <p className="text-white font-bold text-lg tracking-tight uppercase">{item.name}</p>
-                      <span className="text-[10px] text-rose-gold font-bold uppercase tracking-widest">Explore Layout</span>
-                    </div>
-                  </div>
-                ))}
-              </>
-            )}
-          </div>
-        </div>
-      </section>
-
-      {/* Gallery Section */}
-      <section id="gallery" className="section-padding bg-[#0B0E14] border-t border-white/5">
-        <div className="container max-w-7xl mx-auto px-6">
-          <div className="text-center space-y-4 mb-16">
-            <div className="flex justify-center">
-              <div className="w-12 h-1 bg-rose-gold rounded-full"></div>
-            </div>
-            <h2 className="text-white text-3xl md:text-4xl font-black uppercase tracking-wider">Project Gallery</h2>
-            <p className="text-base text-slate-400 max-w-2xl mx-auto font-light">
-              Showcasing our finest interior design projects
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {projectGallery.map((imagePath, idx) => (
-              <div
-                key={idx}
-                className="relative h-80 rounded-2xl overflow-hidden group cursor-pointer border border-white/10 glow-silver bg-[#171B24]"
-              >
-                <OptimizedImage 
-                  src={imagePath} 
-                  alt={`Project ${idx + 1}`} 
-                  containerClassName="absolute inset-0 w-full h-full"
-                  className="grayscale-[0.2] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" 
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0B0E14]/90 via-[#0B0E14]/40 to-transparent"></div>
-                <div className="absolute bottom-6 left-6 text-left">
-                  <p className="text-white font-bold text-lg uppercase">Signature Project {idx + 1}</p>
-                  <span className="text-[10px] text-rose-gold font-bold uppercase tracking-widest">Bespoke Design</span>
+                  <ChevronRight size={18} className="text-gray-600 group-hover:text-white transition-colors" />
                 </div>
               </div>
             ))}
@@ -337,143 +193,142 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Why Choose Us Section */}
-      <section className="section-padding bg-[#0B0E14] border-t border-white/5">
-        <div className="container max-w-7xl mx-auto px-6">
-          <div className="text-center space-y-4 mb-16">
-            <div className="flex justify-center">
-              <div className="w-12 h-1 bg-rose-gold rounded-full"></div>
-            </div>
-            <h2 className="text-white text-3xl md:text-4xl font-black uppercase tracking-wider">Why Choose Gautam</h2>
-            <p className="text-base text-slate-400 max-w-2xl mx-auto font-light">
-              What makes us the preferred choice for premium interior design
-            </p>
+      {/* ── GALLERY ── */}
+      <section id="gallery" className="py-24 md:py-40 px-6 md:px-12 bg-[#0a0a0a] border-t border-white/5">
+        <div className="max-w-[90rem] mx-auto">
+          <div className="mb-16">
+            <h2 className="cinema-heading text-white mb-4">Featured<br />Works</h2>
+            <div className="cinema-accent-line" />
           </div>
+          {/* Featured */}
+          <div className="group relative rounded-2xl overflow-hidden border border-white/10 bg-[#111111] mb-12 grayscale-hover cursor-pointer antigravity">
+            <div className="px-4 py-3 flex gap-1.5 border-b border-white/5 bg-white/5">
+              <div className="w-3 h-3 rounded-full bg-red-500" /><div className="w-3 h-3 rounded-full bg-yellow-500" /><div className="w-3 h-3 rounded-full bg-green-500" />
+            </div>
+            <div className="aspect-video overflow-hidden">
+              <img src={projectGallery[0]} className="w-full h-full object-cover" alt="Featured project" />
+            </div>
+            <div className="p-8 flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4">
+              <div>
+                <p className="text-xs font-black uppercase tracking-widest text-rose-300 mb-2">Project 01</p>
+                <h3 className="text-3xl md:text-4xl font-black uppercase tracking-tight text-white">Signature Kitchen</h3>
+              </div>
+              <button className="px-8 py-3 bg-white text-black font-black uppercase tracking-widest text-xs hover:scale-105 transition-transform flex-shrink-0">
+                Explore
+              </button>
+            </div>
+          </div>
+          {/* Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {projectGallery.slice(1).map((img, idx) => (
+              <div key={idx} className={`group grayscale-hover cursor-pointer ${idx % 2 === 0 ? "antigravity-alt" : "antigravity"}`}>
+                <div className="aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 bg-[#111111] mb-4">
+                  <img src={img} className="w-full h-full object-cover" alt={`Project ${idx + 2}`} />
+                </div>
+                <div className="flex justify-between items-center">
+                  <h4 className="text-lg font-black uppercase tracking-tight">Signature Project {idx + 2}</h4>
+                  <span className="text-xs font-bold text-gray-600 uppercase tracking-widest">2026</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {/* ── WHY CHOOSE US ── */}
+      <section className="py-24 md:py-40 px-6 md:px-12 bg-[#0B0216] border-t border-white/5 relative overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-purple-800 rounded-full opacity-20 blur-[120px] pointer-events-none" />
+        <div className="max-w-[90rem] mx-auto relative z-10">
+          <div className="mb-16">
+            <h2 className="cinema-heading text-white mb-4">Why Choose<br />Gautam</h2>
+            <div className="cinema-accent-line" />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { title: "Precision Manufacturing", desc: "State-of-the-art machinery and expert craftsmen" },
-              { title: "Custom Designs", desc: "Personalized solutions tailored to your space" },
-              { title: "Premium Materials", desc: "Only branded materials like Hettich, Ebco, Greenply" },
-              { title: "Affordable Pricing", desc: "Luxury without breaking the bank" },
-              { title: "Professional Installation", desc: "Expert team ensuring flawless execution" },
-              { title: "Timely Delivery", desc: "Guaranteed project completion on schedule" },
+              { n: "01", title: "Precision Manufacturing", desc: "State-of-the-art machinery and expert craftsmen" },
+              { n: "02", title: "Custom Designs", desc: "Personalized solutions tailored to your space" },
+              { n: "03", title: "Premium Materials", desc: "Branded materials: Hettich, Ebco, Greenply" },
+              { n: "04", title: "Affordable Pricing", desc: "Luxury without breaking the bank" },
+              { n: "05", title: "Professional Installation", desc: "Expert team ensuring flawless execution" },
+              { n: "06", title: "Timely Delivery", desc: "Guaranteed project completion on schedule" },
             ].map((item, idx) => (
-              <div key={idx} className="flex gap-6 p-6 glass rounded-2xl border-white/5 hover:border-rose-gold/20 transition-all duration-300">
-                <div className="w-12 h-12 rounded-full bg-rose-gold/10 flex items-center justify-center flex-shrink-0 text-rose-gold font-bold border border-rose-gold/20">
-                  {idx + 1}
-                </div>
-                <div className="space-y-2 text-left">
-                  <h3 className="font-bold text-white text-lg uppercase tracking-wider">{item.title}</h3>
-                  <p className="text-slate-400 font-light text-sm sm:text-base leading-relaxed">{item.desc}</p>
-                </div>
+              <div key={idx} className={`p-8 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md ${idx % 2 === 0 ? "antigravity" : "antigravity-alt"}`}>
+                <p className="text-[10px] font-black uppercase tracking-[0.3em] text-gray-500 mb-6">{item.n}</p>
+                <h3 className="text-xl font-black uppercase tracking-tight text-white mb-3">{item.title}</h3>
+                <p className="text-slate-400 text-sm font-light leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Process Section */}
-      <section id="process" className="section-padding bg-[#0B0E14] border-t border-white/5">
-        <div className="container max-w-7xl mx-auto px-6">
-          <div className="text-center space-y-4 mb-16">
-            <div className="flex justify-center">
-              <div className="w-12 h-1 bg-rose-gold rounded-full"></div>
-            </div>
-            <h2 className="text-white text-3xl md:text-4xl font-black uppercase tracking-wider">Our Process</h2>
-            <p className="text-base text-slate-400 max-w-2xl mx-auto font-light">
-              Six steps to your dream interior
-            </p>
+      {/* ── PROCESS ── */}
+      <section id="process" className="py-24 md:py-40 px-6 md:px-12 bg-[#050505] border-t border-white/5">
+        <div className="max-w-[90rem] mx-auto">
+          <div className="mb-16">
+            <h2 className="cinema-heading text-white mb-4">Our<br />Process</h2>
+            <div className="cinema-accent-line" />
+            <p className="text-gray-500 mt-4 font-light">Six steps to your dream interior</p>
           </div>
-
-          <div className="relative rounded-2xl overflow-hidden border border-white/10 glow-silver p-4 bg-white/5 backdrop-blur-sm max-w-5xl mx-auto">
+          <div className="relative rounded-2xl overflow-hidden border border-white/10 p-4 bg-white/5 backdrop-blur-sm max-w-5xl">
             <img
               src="https://d2xsxph8kpxj0f.cloudfront.net/310519663665123618/coXWUQEdTXUjHQnzQmvQwe/process-timeline-visual-o7KdfeKNbdDGwcmUo5a5KN.webp"
               alt="Our Process Timeline"
-              className="w-full rounded-lg filter invert brightness-90 contrast-125 mix-blend-screen"
+              className="w-full rounded-lg filter invert brightness-90 contrast-125"
             />
           </div>
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="section-padding bg-[#0B0E14] border-t border-white/5">
-        <div className="container max-w-7xl mx-auto px-6">
-          <div className="text-center space-y-4 mb-16">
-            <div className="flex justify-center">
-              <div className="w-12 h-1 bg-rose-gold rounded-full"></div>
-            </div>
-            <h2 className="text-white text-3xl md:text-4xl font-black uppercase tracking-wider">Client Testimonials</h2>
-            <p className="text-base text-slate-400 max-w-2xl mx-auto font-light">
-              What our satisfied clients say about us
-            </p>
+      {/* ── TESTIMONIALS ── */}
+      <section className="py-24 md:py-40 px-6 md:px-12 bg-[#0a0a0a] border-t border-white/5">
+        <div className="max-w-[90rem] mx-auto">
+          <div className="mb-16">
+            <h2 className="cinema-heading text-white mb-4">Client<br />Stories</h2>
+            <div className="cinema-accent-line" />
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               { name: "Rajesh Kumar", rating: 5, text: "Exceptional quality and professionalism. The kitchen exceeded our expectations!" },
               { name: "Priya Sharma", rating: 5, text: "Best interior design experience. Highly recommended for premium modular kitchens." },
               { name: "Amit Patel", rating: 5, text: "Outstanding craftsmanship and attention to detail. Worth every penny!" },
-            ].map((testimonial, idx) => (
-              <Card key={idx} className="p-8 glass rounded-2xl border border-white/5 hover:border-rose-gold/30 hover:glow-rose transition-all duration-500 text-left bg-transparent">
-                <div className="space-y-4">
-                  <div className="flex gap-1">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} size={16} className="fill-rose-gold text-rose-gold" />
-                    ))}
-                  </div>
-                  <p className="text-slate-300 italic font-light">"{testimonial.text}"</p>
-                  <p className="font-bold text-white uppercase tracking-wider text-sm">{testimonial.name}</p>
+            ].map((t, idx) => (
+              <div key={idx} className={`p-8 rounded-3xl border border-white/10 bg-[#111111] ${idx % 2 === 0 ? "antigravity" : "antigravity-alt"}`}>
+                <div className="flex gap-1 mb-4">
+                  {[...Array(t.rating)].map((_, i) => <Star key={i} size={14} className="fill-rose-300 text-rose-300" />)}
                 </div>
-              </Card>
+                <p className="text-slate-300 italic font-light mb-6 leading-relaxed">"{t.text}"</p>
+                <p className="font-black text-white uppercase tracking-widest text-xs">{t.name}</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Lead Generation Section */}
-      <section className="section-padding bg-[#0B0E14] border-t border-white/5">
-        <div className="container max-w-7xl mx-auto px-6">
-          <div className="max-w-2xl mx-auto space-y-8 glass p-8 sm:p-12 rounded-3xl border border-white/10 glow-rose text-left">
-            <div className="space-y-4 text-center">
-              <h2 className="text-white text-3xl font-black uppercase tracking-wider">Get Your Free 3D Design Consultation</h2>
-              <p className="text-slate-400 font-light text-sm">
-                Let our experts create a personalized design for your space
-              </p>
-            </div>
-
+      {/* ── CONTACT FORM ── */}
+      <section className="py-24 md:py-40 px-6 md:px-12 bg-[#050505] border-t border-white/5">
+        <div className="max-w-[90rem] mx-auto">
+          <div className="mb-16">
+            <h2 className="cinema-heading text-white mb-4">Get Free<br />Consultation</h2>
+            <div className="cinema-accent-line" />
+          </div>
+          <div className="max-w-2xl">
             <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <input
-                  type="text"
-                  placeholder="Your Name"
-                  className="w-full px-5 py-4 rounded-sm bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-rose-gold focus:ring-1 focus:ring-rose-gold transition-all duration-300"
-                />
-                <input
-                  type="email"
-                  placeholder="Email Address"
-                  className="w-full px-5 py-4 rounded-sm bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-rose-gold focus:ring-1 focus:ring-rose-gold transition-all duration-300"
-                />
+                <input type="text" placeholder="Your Name" className="w-full px-5 py-4 bg-white/5 border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-white transition-all rounded-lg" />
+                <input type="email" placeholder="Email Address" className="w-full px-5 py-4 bg-white/5 border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-white transition-all rounded-lg" />
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <input
-                  type="tel"
-                  placeholder="Phone Number"
-                  className="w-full px-5 py-4 rounded-sm bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-rose-gold focus:ring-1 focus:ring-rose-gold transition-all duration-300"
-                />
-                <select className="w-full px-5 py-4 rounded-sm bg-[#171B24] border border-white/10 text-white focus:outline-none focus:border-rose-gold focus:ring-1 focus:ring-rose-gold transition-all duration-300">
-                  <option value="" className="bg-[#171B24]">Select Property Type</option>
-                  <option value="apartment" className="bg-[#171B24]">Apartment</option>
-                  <option value="villa" className="bg-[#171B24]">Villa</option>
-                  <option value="commercial" className="bg-[#171B24]">Commercial</option>
+                <input type="tel" placeholder="Phone Number" className="w-full px-5 py-4 bg-white/5 border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-white transition-all rounded-lg" />
+                <select className="w-full px-5 py-4 bg-[#111111] border border-white/10 text-white focus:outline-none focus:border-white transition-all rounded-lg">
+                  <option value="">Select Property Type</option>
+                  <option value="apartment">Apartment</option>
+                  <option value="villa">Villa</option>
+                  <option value="commercial">Commercial</option>
                 </select>
               </div>
-              <textarea
-                placeholder="Tell us about your project..."
-                rows={4}
-                className="w-full px-5 py-4 rounded-sm bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-rose-gold focus:ring-1 focus:ring-rose-gold transition-all duration-300"
-              ></textarea>
-              <button type="submit" className="w-full py-5 bg-white text-black font-black uppercase tracking-[0.25em] text-xs hover:bg-rose-gold transition-all duration-500 rounded-sm cursor-pointer">
+              <textarea placeholder="Tell us about your project..." rows={4} className="w-full px-5 py-4 bg-white/5 border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-white transition-all rounded-lg" />
+              <button type="submit" className="w-full py-5 bg-white text-black font-black uppercase tracking-[0.25em] text-xs hover:scale-[1.01] transition-transform rounded-lg">
                 Get Free Consultation
               </button>
             </form>
@@ -481,89 +336,44 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contact & Footer */}
-      <footer id="contact" className="bg-[#0B0E14] border-t border-white/5 text-left">
-        <div className="container max-w-7xl mx-auto px-6 section-padding">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-            {/* Brand */}
-            <div className="space-y-4">
-              <h3 className="text-2xl font-bold uppercase tracking-tighter text-white">
-                Gautam <span className="text-rose-gold">Modular</span>
-              </h3>
-              <p className="text-slate-400 text-sm font-light leading-relaxed">
-                Premium modular kitchen and interior solutions for modern living.
-              </p>
+      {/* ── FOOTER ── */}
+      <footer id="contact" className="py-20 px-6 md:px-12 bg-[#050505] border-t border-white/5">
+        <div className="max-w-[90rem] mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-20">
+            <div className="text-[14vw] md:text-[10vw] font-black uppercase tracking-tighter leading-none">
+              FIN.<br />
+              <span style={{ background: "linear-gradient(to right,#e4b4b4,#cbd5e1)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>2026</span>
             </div>
-
-            {/* Quick Links */}
-            <div className="space-y-4">
-              <h4 className="font-bold text-white uppercase tracking-wider text-sm">Quick Links</h4>
-              <ul className="space-y-2 text-sm">
-                <li><a href="#services" className="text-slate-400 hover:text-rose-gold transition-colors duration-300">Services</a></li>
-                <li><a href="#gallery" className="text-slate-400 hover:text-rose-gold transition-colors duration-300">Gallery</a></li>
-                <li><a href="#about" className="text-slate-400 hover:text-rose-gold transition-colors duration-300">About Us</a></li>
-                <li><a href="#contact" className="text-slate-400 hover:text-rose-gold transition-colors duration-300">Contact</a></li>
-              </ul>
-            </div>
-
-            {/* Contact Info */}
-            <div className="space-y-4">
-              <h4 className="font-bold text-white uppercase tracking-wider text-sm">Contact</h4>
-              <ul className="space-y-3 text-sm">
-                <li className="flex gap-3">
-                  <Phone size={16} className="text-rose-gold flex-shrink-0 mt-0.5" />
-                  <span className="text-slate-400 font-light">+91 9035725303</span>
-                </li>
-                <li className="flex gap-3">
-                  <Mail size={16} className="text-rose-gold flex-shrink-0 mt-0.5" />
-                  <span className="text-slate-400 font-light">info@gautammodularkitchen.com</span>
-                </li>
-                <li className="flex gap-3">
-                  <MapPin size={16} className="text-rose-gold flex-shrink-0 mt-0.5" />
-                  <span className="text-slate-400 font-light">Bangalore, India</span>
-                </li>
-              </ul>
-            </div>
-
-            {/* Hours */}
-            <div className="space-y-4">
-              <h4 className="font-bold text-white uppercase tracking-wider text-sm">Business Hours</h4>
-              <ul className="space-y-2 text-sm text-slate-400">
-                <li className="flex gap-3">
-                  <Clock size={16} className="text-rose-gold flex-shrink-0 mt-0.5" />
-                  <div>
-                    <p className="font-light">Mon - Sat: 10 AM - 7 PM</p>
-                    <p className="font-light">Sunday: 11 AM - 5 PM</p>
-                  </div>
-                </li>
-              </ul>
+            <div className="flex flex-col gap-4 md:text-right text-sm">
+              <div className="flex items-center md:justify-end gap-3"><Phone size={14} className="text-rose-300" /><span className="text-slate-400">+91 9035725303</span></div>
+              <div className="flex items-center md:justify-end gap-3"><Mail size={14} className="text-rose-300" /><span className="text-slate-400">info@gautammodularkitchen.com</span></div>
+              <div className="flex items-center md:justify-end gap-3"><MapPin size={14} className="text-rose-300" /><span className="text-slate-400">Bangalore, India</span></div>
+              <div className="flex items-center md:justify-end gap-3"><Clock size={14} className="text-rose-300" /><span className="text-slate-400">Mon–Sat: 10 AM – 7 PM</span></div>
+              <div className="grid grid-cols-2 gap-2 mt-4">
+                {["Services", "Gallery", "About Us", "Contact"].map((l, i) => (
+                  <a key={i} href={`#${["services","gallery","about","contact"][i]}`} className="text-xs font-bold uppercase tracking-widest text-gray-600 hover:text-white transition-colors">{l}</a>
+                ))}
+              </div>
             </div>
           </div>
-
-          {/* Floating Action Buttons */}
-          <div className="fixed bottom-8 right-8 flex flex-col gap-4 z-40">
-            <a 
-              href="https://wa.me/919035725303"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-14 h-14 rounded-full bg-[#25D366] text-white shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 flex items-center justify-center"
-            >
-              <MessageCircle size={24} />
-            </a>
-            <a 
-              href="tel:+919035725303"
-              className="w-14 h-14 rounded-full bg-white text-black border border-white/10 shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 flex items-center justify-center glow-silver"
-            >
-              <Phone size={24} className="text-rose-gold" />
-            </a>
-          </div>
-
-          {/* Copyright */}
-          <div className="border-t border-white/5 pt-8 text-center text-sm text-slate-500 font-light">
-            <p>&copy; 2026 Gautam Modular Kitchen. All rights reserved.</p>
+          <div className="flex flex-col md:flex-row justify-between pt-8 border-t border-white/10 text-[10px] font-bold uppercase tracking-[0.3em] text-gray-700">
+            <p>© 2026 Gautam Modular Kitchen. All Rights Reserved.</p>
+            <p>Crafted for Living. Designed for Life.</p>
           </div>
         </div>
       </footer>
+
+      {/* Floating Buttons */}
+      <div className="fixed bottom-8 right-8 flex flex-col gap-4 z-40">
+        <a href="https://wa.me/919035725303" target="_blank" rel="noopener noreferrer"
+          className="w-14 h-14 rounded-full bg-[#25D366] text-white shadow-lg hover:scale-110 transition-all duration-300 flex items-center justify-center">
+          <MessageCircle size={22} />
+        </a>
+        <a href="tel:+919035725303"
+          className="w-14 h-14 rounded-full bg-white text-black shadow-lg hover:scale-110 transition-all duration-300 flex items-center justify-center">
+          <Phone size={22} />
+        </a>
+      </div>
     </div>
   );
 }
