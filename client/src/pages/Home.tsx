@@ -1,11 +1,40 @@
 import { ChevronRight, Phone, MessageCircle, MapPin, Clock, Mail, Star } from "lucide-react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import PremiumHero from "@/components/PremiumHero";
 import { OptimizedImage } from "@/components/ui/OptimizedImage";
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState("kitchens");
   const [scrolled, setScrolled] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    propertyType: "",
+    message: ""
+  });
+  const [phoneError, setPhoneError] = useState("");
+
+  const handleConsultationSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    
+    // Validate phone number - strictly 10 digits
+    if (formData.phone.length !== 10) {
+      setPhoneError("Please enter exactly 10 digits");
+      return;
+    }
+    setPhoneError("");
+
+    const text = `Hi, I would like to get a free consultation. Here are my details:
+Name: ${formData.name}
+Email: ${formData.email}
+Phone: ${formData.phone}
+Property Type: ${formData.propertyType || "Not specified"}
+Message: ${formData.message || "Not specified"}`;
+
+    const whatsappUrl = `https://wa.me/919035725303?text=${encodeURIComponent(text)}`;
+    window.open(whatsappUrl, '_blank');
+  };
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -208,14 +237,9 @@ export default function Home() {
             <div className="aspect-video overflow-hidden">
               <img src={projectGallery[0]} className="w-full h-full object-cover" alt="Featured project" />
             </div>
-            <div className="p-8 flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4">
-              <div>
-                <p className="text-xs font-black uppercase tracking-widest text-rose-300 mb-2">Project 01</p>
-                <h3 className="text-3xl md:text-4xl font-black uppercase tracking-tight text-white">Signature Kitchen</h3>
-              </div>
-              <button className="px-8 py-3 bg-white text-black font-black uppercase tracking-widest text-xs hover:scale-105 transition-transform flex-shrink-0">
-                Explore
-              </button>
+            <div className="p-8">
+              <p className="text-xs font-black uppercase tracking-widest text-rose-300 mb-2">Project 01</p>
+              <h3 className="text-3xl md:text-4xl font-black uppercase tracking-tight text-white">Signature Kitchen</h3>
             </div>
           </div>
           {/* Grid */}
@@ -312,26 +336,76 @@ export default function Home() {
             <h2 className="cinema-heading text-white mb-4">Get Free<br />Consultation</h2>
             <div className="cinema-accent-line" />
           </div>
-          <div className="max-w-2xl">
-            <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            <form className="space-y-6" onSubmit={handleConsultationSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <input type="text" placeholder="Your Name" className="w-full px-5 py-4 bg-white/5 border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-white transition-all rounded-lg" />
-                <input type="email" placeholder="Email Address" className="w-full px-5 py-4 bg-white/5 border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-white transition-all rounded-lg" />
+                <input 
+                  type="text" 
+                  placeholder="Your Name" 
+                  required
+                  value={formData.name}
+                  onChange={(e) => setFormData({...formData, name: e.target.value})}
+                  className="w-full px-5 py-4 bg-white/5 border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-white transition-all rounded-lg" 
+                />
+                <input 
+                  type="email" 
+                  placeholder="Email Address" 
+                  required
+                  value={formData.email}
+                  onChange={(e) => setFormData({...formData, email: e.target.value})}
+                  className="w-full px-5 py-4 bg-white/5 border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-white transition-all rounded-lg" 
+                />
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <input type="tel" placeholder="Phone Number" className="w-full px-5 py-4 bg-white/5 border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-white transition-all rounded-lg" />
-                <select className="w-full px-5 py-4 bg-[#111111] border border-white/10 text-white focus:outline-none focus:border-white transition-all rounded-lg">
+                <div>
+                  <input 
+                    type="tel" 
+                    placeholder="Phone Number" 
+                    required
+                    value={formData.phone}
+                    onChange={(e) => {
+                      const val = e.target.value.replace(/\D/g, '').slice(0, 10);
+                      setFormData({...formData, phone: val});
+                      setPhoneError("");
+                    }}
+                    className={`w-full px-5 py-4 bg-white/5 border ${phoneError ? 'border-red-500 focus:border-red-500' : 'border-white/10 focus:border-white'} text-white placeholder-gray-600 focus:outline-none transition-all rounded-lg`}
+                  />
+                  {phoneError && <p className="text-red-500 text-xs mt-2 ml-1">{phoneError}</p>}
+                </div>
+                <select 
+                  value={formData.propertyType}
+                  onChange={(e) => setFormData({...formData, propertyType: e.target.value})}
+                  className="w-full px-5 py-4 bg-[#111111] border border-white/10 text-white focus:outline-none focus:border-white transition-all rounded-lg"
+                >
                   <option value="">Select Property Type</option>
                   <option value="apartment">Apartment</option>
                   <option value="villa">Villa</option>
                   <option value="commercial">Commercial</option>
                 </select>
               </div>
-              <textarea placeholder="Tell us about your project..." rows={4} className="w-full px-5 py-4 bg-white/5 border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-white transition-all rounded-lg" />
+              <textarea 
+                placeholder="Tell us about your project..." 
+                rows={4} 
+                value={formData.message}
+                onChange={(e) => setFormData({...formData, message: e.target.value})}
+                className="w-full px-5 py-4 bg-white/5 border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-white transition-all rounded-lg" 
+              />
               <button type="submit" className="w-full py-5 bg-white text-black font-black uppercase tracking-[0.25em] text-xs hover:scale-[1.01] transition-transform rounded-lg">
                 Get Free Consultation
               </button>
             </form>
+            <div className="h-full min-h-[400px] w-full rounded-2xl overflow-hidden border border-white/10 bg-white/5 relative grayscale-hover group">
+              <iframe
+                src="https://maps.google.com/maps?q=GMK%20Interior%20Decoration%20works%20%26%20Modular%20Kitchens%20Bangalore&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0, minHeight: '400px', display: 'block' }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="group-hover:scale-105 transition-transform duration-700"
+              ></iframe>
+            </div>
           </div>
         </div>
       </section>
@@ -346,7 +420,7 @@ export default function Home() {
             </div>
             <div className="flex flex-col gap-4 md:text-right text-sm">
               <div className="flex items-center md:justify-end gap-3"><Phone size={14} className="text-rose-300" /><span className="text-slate-400">+91 9035725303</span></div>
-              <div className="flex items-center md:justify-end gap-3"><Mail size={14} className="text-rose-300" /><span className="text-slate-400">info@gautammodularkitchen.com</span></div>
+              <div className="flex items-center md:justify-end gap-3"><Mail size={14} className="text-rose-300" /><span className="text-slate-400">gautammodularkitchen@gmail.com</span></div>
               <div className="flex items-center md:justify-end gap-3"><MapPin size={14} className="text-rose-300" /><span className="text-slate-400">Bangalore, India</span></div>
               <div className="flex items-center md:justify-end gap-3"><Clock size={14} className="text-rose-300" /><span className="text-slate-400">Mon–Sat: 10 AM – 7 PM</span></div>
               <div className="grid grid-cols-2 gap-2 mt-4">
