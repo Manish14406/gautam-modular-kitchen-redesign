@@ -1,4 +1,4 @@
-import { ChevronRight, Phone, MessageCircle, MapPin, Clock, Mail, Star } from "lucide-react";
+import { ChevronRight, ChevronLeft, Phone, MessageCircle, MapPin, Clock, Mail, Star, X } from "lucide-react";
 import React, { useState, useEffect } from "react";
 import PremiumHero from "@/components/PremiumHero";
 import { OptimizedImage } from "@/components/ui/OptimizedImage";
@@ -14,6 +14,26 @@ export default function Home() {
     message: ""
   });
   const [phoneError, setPhoneError] = useState("");
+  
+  const [selectedServiceImages, setSelectedServiceImages] = useState<string[]>([]);
+  const [selectedServiceTitle, setSelectedServiceTitle] = useState("");
+  const [isImageModalOpen, setIsImageModalOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const openServiceModal = (images: string[], title: string) => {
+    setSelectedServiceImages(images);
+    setSelectedServiceTitle(title);
+    setCurrentImageIndex(0);
+    setIsImageModalOpen(true);
+  };
+
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % selectedServiceImages.length);
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + selectedServiceImages.length) % selectedServiceImages.length);
+  };
 
   const handleConsultationSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -75,7 +95,6 @@ Message: ${formData.message || "Not specified"}`;
     "/images/island_kitchen.webp",
     "/images/parallel_kitchen.webp",
     "/images/open_kitchen.webp",
-    "/images/island_kitchen.webp",
   ];
 
   return (
@@ -163,14 +182,14 @@ Message: ${formData.message || "Not specified"}`;
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
             {[
-              { title: "Modular Kitchens", desc: "Custom-designed kitchens with premium finishes", num: "01" },
-              { title: "Wardrobes", desc: "Floor-to-ceiling storage solutions", num: "02" },
-              { title: "TV Units", desc: "Entertainment centers with integrated storage", num: "03" },
-              { title: "Crockery Units", desc: "Elegant display and storage solutions", num: "04" },
-              { title: "Office Furniture", desc: "Professional workspace solutions", num: "05" },
-              { title: "False Ceiling", desc: "Modern ceiling designs with integrated lighting", num: "06" },
+              { title: "Modular Kitchens", desc: "Custom-designed kitchens with premium finishes", num: "01", images: ["/images/Modular_kitchen1.png", "/images/modular_kitchen2.png"] },
+              { title: "Wardrobes", desc: "Floor-to-ceiling storage solutions", num: "02", images: ["/images/wardrobes1.webp", "/images/wardrobes2.avif"] },
+              { title: "TV Units", desc: "Entertainment centers with integrated storage", num: "03", images: ["/images/TVunits1.webp", "/images/Tvunits2.jpeg"] },
+              { title: "Crockery Units", desc: "Elegant display and storage solutions", num: "04", images: ["/images/crockeryunit1.jpg", "/images/crockeryunt2.jpg"] },
+              { title: "Office Furniture", desc: "Professional workspace solutions", num: "05", images: ["/images/officefurniture1.webp", "/images/officefurniture2.webp"] },
+              { title: "False Ceiling", desc: "Modern ceiling designs with integrated lighting", num: "06", images: ["/images/falseceiling1.jpg", "/images/falseceiling2.avif"] },
             ].map((service, idx) => (
-              <div key={idx} className={`group p-8 border border-white/10 bg-[#111111] rounded-2xl hover:border-rose-300/30 transition-all duration-500 cursor-pointer ${idx % 2 === 0 ? "antigravity" : "antigravity-alt"}`}>
+              <div key={idx} onClick={() => openServiceModal(service.images, service.title)} className={`group p-8 border border-white/10 bg-[#111111] rounded-2xl hover:border-rose-300/30 transition-all duration-500 cursor-pointer ${idx % 2 === 0 ? "antigravity" : "antigravity-alt"}`}>
                 <p className="text-[10px] font-black uppercase tracking-[0.3em] text-gray-600 mb-6">{service.num}</p>
                 <h3 className="text-xl font-black uppercase tracking-tight text-white mb-3 group-hover:text-rose-300 transition-colors">{service.title}</h3>
                 <p className="text-slate-500 text-sm font-light leading-relaxed mb-6">{service.desc}</p>
@@ -190,13 +209,7 @@ Message: ${formData.message || "Not specified"}`;
             <h2 className="cinema-heading text-white mb-4">Kitchen<br />Collections</h2>
             <div className="cinema-accent-line" />
           </div>
-          <div className="flex flex-wrap gap-3 my-12">
-            {["kitchens", "finishes", "layouts"].map((tab) => (
-              <button key={tab} onClick={() => setActiveTab(tab)}
-                className={`px-8 py-3 text-xs font-black uppercase tracking-[0.25em] transition-all duration-300 rounded-full cursor-pointer border ${activeTab === tab ? "bg-white text-black border-white" : "border-white/20 text-gray-400 hover:border-white/50"}`}>
-                {tab}
-              </button>
-            ))}
+          <div className="hidden">
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {kitchenCollections[activeTab as keyof typeof kitchenCollections].map((item, idx) => (
@@ -436,6 +449,54 @@ Message: ${formData.message || "Not specified"}`;
           </div>
         </div>
       </footer>
+
+      {/* ── IMAGE MODAL ── */}
+      {isImageModalOpen && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4 sm:p-8 backdrop-blur-md">
+          <button 
+            onClick={() => setIsImageModalOpen(false)}
+            className="absolute top-6 right-6 p-2 bg-white/10 hover:bg-white/20 rounded-full text-white transition-all z-10"
+          >
+            <X size={24} />
+          </button>
+          
+          <div className="max-w-4xl w-full max-h-[90vh] flex flex-col items-center">
+            <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-white mb-6 text-center">{selectedServiceTitle}</h3>
+            
+            <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-white/10 bg-[#050505] flex items-center justify-center">
+              {selectedServiceImages.length > 0 && (
+                <img 
+                  src={selectedServiceImages[currentImageIndex]} 
+                  alt={`${selectedServiceTitle} ${currentImageIndex + 1}`} 
+                  className="w-full h-full object-contain" 
+                />
+              )}
+              
+              {selectedServiceImages.length > 1 && (
+                <>
+                  <button 
+                    onClick={prevImage}
+                    className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-black/50 hover:bg-black/80 rounded-full text-white backdrop-blur-md transition-all"
+                  >
+                    <ChevronLeft size={24} />
+                  </button>
+                  <button 
+                    onClick={nextImage}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-black/50 hover:bg-black/80 rounded-full text-white backdrop-blur-md transition-all"
+                  >
+                    <ChevronRight size={24} />
+                  </button>
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                    {selectedServiceImages.map((_, i) => (
+                      <div key={i} className={`w-2 h-2 rounded-full transition-all ${i === currentImageIndex ? "bg-rose-400 w-4" : "bg-white/30"}`} />
+                    ))}
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Floating Buttons */}
       <div className="fixed bottom-8 right-8 flex flex-col gap-4 z-40">
