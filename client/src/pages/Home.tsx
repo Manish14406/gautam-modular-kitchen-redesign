@@ -183,11 +183,11 @@ Message: ${formData.message || "Not specified"}`;
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
             {[
               { title: "Modular Kitchens", desc: "Custom-designed kitchens with premium finishes", num: "01", images: ["/images/Modular_kitchen1.png", "/images/modular_kitchen2.png", "/images/Modular_kitchen3.jpg", "/images/Modular_kitchen4.jpg"] },
-              { title: "Wardrobes", desc: "Floor-to-ceiling storage solutions", num: "02", images: ["/images/wardrobes1.webp", "/images/wardrobes2.avif", "/images/wardrobes3.jpg", "/images/wardrobes4.jpg"] },
-              { title: "TV Units", desc: "Entertainment centers with integrated storage", num: "03", images: ["/images/TVunits1.webp", "/images/Tvunits2.jpeg", "/images/TVunits3.webp", "/images/TVunit.avif"] },
-              { title: "Crockery Units", desc: "Elegant display and storage solutions", num: "04", images: ["/images/crockeryunit1.jpg", "/images/crockeryunt2.jpg", "/images/crockeryunit3.jpg", "/images/crockeryunit4.avif"] },
+              { title: "Wardrobes", desc: "Floor-to-ceiling storage solutions", num: "02", images: ["/images/wardrobes1.webp", "/images/wardrobes2.webp", "/images/wardrobes3.jpg", "/images/wardrobes4.jpg"] },
+              { title: "TV Units", desc: "Entertainment centers with integrated storage", num: "03", images: ["/images/TVunits1.webp", "/images/Tvunits2.jpeg", "/images/TVunits3.webp", "/images/TVunit.webp"] },
+              { title: "Crockery Units", desc: "Elegant display and storage solutions", num: "04", images: ["/images/crockeryunit1.jpg", "/images/crockeryunt2.jpg", "/images/crockeryunit3.jpg", "/images/crockeryunit4.webp"] },
               { title: "Office Furniture", desc: "Professional workspace solutions", num: "05", images: ["/images/officefurniture1.webp", "/images/officefurniture2.webp", "/images/officefurniture3.jpg", "/images/officefurniture4.jpg"] },
-              { title: "False Ceiling", desc: "Modern ceiling designs with integrated lighting", num: "06", images: ["/images/falseceiling1.jpg", "/images/falseceiling2.avif", "/images/falseceiling3.jpg", "/images/falseceiling4.jpg"] },
+              { title: "False Ceiling", desc: "Modern ceiling designs with integrated lighting", num: "06", images: ["/images/falseceiling1.jpg", "/images/falseceiling2.webp", "/images/falseceiling3.jpg", "/images/falseceiling4.jpg"] },
             ].map((service, idx) => (
               <div key={idx} onClick={() => openServiceModal(service.images, service.title)} className={`group p-8 border border-white/10 bg-[#111111] rounded-2xl hover:border-rose-300/30 transition-all duration-500 cursor-pointer ${idx % 2 === 0 ? "antigravity" : "antigravity-alt"}`}>
                 <p className="text-[10px] font-black uppercase tracking-[0.3em] text-gray-600 mb-6">{service.num}</p>
@@ -220,7 +220,7 @@ Message: ${formData.message || "Not specified"}`;
                   <div className="w-2.5 h-2.5 rounded-full bg-green-500" />
                 </div>
                 <div className="h-56 overflow-hidden">
-                  <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+                  <img src={item.image} alt={item.name} className="w-full h-full object-cover" loading="lazy" />
                 </div>
                 <div className="p-6 flex justify-between items-center">
                   <div>
@@ -248,7 +248,7 @@ Message: ${formData.message || "Not specified"}`;
               <div className="w-3 h-3 rounded-full bg-red-500" /><div className="w-3 h-3 rounded-full bg-yellow-500" /><div className="w-3 h-3 rounded-full bg-green-500" />
             </div>
             <div className="aspect-video overflow-hidden">
-              <img src={projectGallery[0]} className="w-full h-full object-cover" alt="Featured project" />
+              <img src={projectGallery[0]} className="w-full h-full object-cover" alt="Featured project" loading="lazy" />
             </div>
             <div className="p-8">
               <p className="text-xs font-black uppercase tracking-widest text-rose-300 mb-2">Project 01</p>
@@ -260,7 +260,7 @@ Message: ${formData.message || "Not specified"}`;
             {projectGallery.slice(1).map((img, idx) => (
               <div key={idx} className={`group grayscale-hover cursor-pointer ${idx % 2 === 0 ? "antigravity-alt" : "antigravity"}`}>
                 <div className="aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 bg-[#111111] mb-4">
-                  <img src={img} className="w-full h-full object-cover" alt={`Project ${idx + 2}`} />
+                  <img src={img} className="w-full h-full object-cover" alt={`Project ${idx + 2}`} loading="lazy" />
                 </div>
                 <div className="flex justify-between items-center">
                   <h4 className="text-lg font-black uppercase tracking-tight">Signature Project {idx + 2}</h4>
@@ -409,7 +409,7 @@ Message: ${formData.message || "Not specified"}`;
             </form>
             <div className="h-full min-h-[400px] w-full rounded-2xl overflow-hidden border border-white/10 bg-white/5 relative grayscale-hover group">
               <a 
-                href="https://www.google.com/maps/place//@12.8408994,77.6098879,17.25z/data=!4m6!1m5!3m4!2zMTLCsDUwJzI2LjgiTiA3N8KwMzYnMzkuNiJF!8m2!3d12.8407778!4d77.611?hl=en&entry=ttu&g_ep=EgoyMDI2MDUyNS4wIKXMDSoASAFQAw%3D%3D" 
+                href="https://www.google.com/maps/place/12%C2%B050'26.8%22N+77%C2%B036'39.6%22E/@12.8407696,77.6084144,17z/data=!3m1!4b1!4m4!3m3!8m2!3d12.8407696!4d77.6109893?hl=en&entry=ttu&g_ep=EgoyMDI2MDUyNS4wIKXMDSoASAFQAw%3D%3D" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="absolute inset-0 z-10"
@@ -476,6 +476,7 @@ Message: ${formData.message || "Not specified"}`;
                   src={selectedServiceImages[currentImageIndex]} 
                   alt={`${selectedServiceTitle} ${currentImageIndex + 1}`} 
                   className="w-full h-full object-contain" 
+                  loading="lazy"
                 />
               )}
               
