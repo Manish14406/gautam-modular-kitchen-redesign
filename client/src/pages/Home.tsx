@@ -435,11 +435,11 @@ Message: ${formData.message || "Not specified"}`;
         <div className="max-w-[90rem] mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-20">
             <div className="text-[14vw] md:text-[10vw] font-black uppercase tracking-tighter leading-none">
-              From<br />
+              Since<br />
               <span style={{ background: "linear-gradient(to right,#e4b4b4,#cbd5e1)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>2009</span>
             </div>
             <div className="flex flex-col gap-4 md:text-right text-sm">
-              <div className="flex items-center md:justify-end gap-3"><Phone size={14} className="text-rose-300" /><span className="text-slate-400"><a href="tel:+919035725303" className="text-slate-400 hover:text-white transition-colors">+91 9035725303</a> / <a href="tel:+918310240952" className="text-slate-400 hover:text-white transition-colors">8310240952</a></span></div>
+              <div className="flex items-center md:justify-end gap-3"><Phone size={14} className="text-rose-300" /><span className="text-slate-400"><a href="tel:+919035725303" className="text-slate-400 hover:text-white transition-colors">+91 9035725303</a></span></div>
               <div className="flex items-center md:justify-end gap-3"><Mail size={14} className="text-rose-300" /><a href="https://mail.google.com/mail/?view=cm&to=gautammodularkitchen@gmail.com" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors">gautammodularkitchen@gmail.com</a></div>
               <div className="flex items-center md:justify-end gap-3"><MapPin size={14} className="text-rose-300" /><span className="text-slate-400 md:text-right">#322, SRY 2, Begur Koppa Road,<br />Mylasyndra, Waddarparlya,<br />Bangalore - 560 068</span></div>
               <div className="flex items-center md:justify-end gap-3"><Clock size={14} className="text-rose-300" /><span className="text-slate-400">Mon–Sat: 10 AM – 7 PM</span></div>
