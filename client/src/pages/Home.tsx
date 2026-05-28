@@ -182,12 +182,12 @@ Message: ${formData.message || "Not specified"}`;
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
             {[
-              { title: "Modular Kitchens", desc: "Custom-designed kitchens with premium finishes", num: "01", images: ["/images/Modular_kitchen1.png", "/images/modular_kitchen2.png"] },
-              { title: "Wardrobes", desc: "Floor-to-ceiling storage solutions", num: "02", images: ["/images/wardrobes1.webp", "/images/wardrobes2.avif"] },
-              { title: "TV Units", desc: "Entertainment centers with integrated storage", num: "03", images: ["/images/TVunits1.webp", "/images/Tvunits2.jpeg"] },
-              { title: "Crockery Units", desc: "Elegant display and storage solutions", num: "04", images: ["/images/crockeryunit1.jpg", "/images/crockeryunt2.jpg"] },
-              { title: "Office Furniture", desc: "Professional workspace solutions", num: "05", images: ["/images/officefurniture1.webp", "/images/officefurniture2.webp"] },
-              { title: "False Ceiling", desc: "Modern ceiling designs with integrated lighting", num: "06", images: ["/images/falseceiling1.jpg", "/images/falseceiling2.avif"] },
+              { title: "Modular Kitchens", desc: "Custom-designed kitchens with premium finishes", num: "01", images: ["/images/Modular_kitchen1.png", "/images/modular_kitchen2.png", "/images/Modular_kitchen3.jpg", "/images/Modular_kitchen4.jpg"] },
+              { title: "Wardrobes", desc: "Floor-to-ceiling storage solutions", num: "02", images: ["/images/wardrobes1.webp", "/images/wardrobes2.avif", "/images/wardrobes3.jpg", "/images/wardrobes4.jpg"] },
+              { title: "TV Units", desc: "Entertainment centers with integrated storage", num: "03", images: ["/images/TVunits1.webp", "/images/Tvunits2.jpeg", "/images/TVunits3.webp", "/images/TVunit.avif"] },
+              { title: "Crockery Units", desc: "Elegant display and storage solutions", num: "04", images: ["/images/crockeryunit1.jpg", "/images/crockeryunt2.jpg", "/images/crockeryunit3.jpg", "/images/crockeryunit4.avif"] },
+              { title: "Office Furniture", desc: "Professional workspace solutions", num: "05", images: ["/images/officefurniture1.webp", "/images/officefurniture2.webp", "/images/officefurniture3.jpg", "/images/officefurniture4.jpg"] },
+              { title: "False Ceiling", desc: "Modern ceiling designs with integrated lighting", num: "06", images: ["/images/falseceiling1.jpg", "/images/falseceiling2.avif", "/images/falseceiling3.jpg", "/images/falseceiling4.jpg"] },
             ].map((service, idx) => (
               <div key={idx} onClick={() => openServiceModal(service.images, service.title)} className={`group p-8 border border-white/10 bg-[#111111] rounded-2xl hover:border-rose-300/30 transition-all duration-500 cursor-pointer ${idx % 2 === 0 ? "antigravity" : "antigravity-alt"}`}>
                 <p className="text-[10px] font-black uppercase tracking-[0.3em] text-gray-600 mb-6">{service.num}</p>
@@ -408,15 +408,22 @@ Message: ${formData.message || "Not specified"}`;
               </button>
             </form>
             <div className="h-full min-h-[400px] w-full rounded-2xl overflow-hidden border border-white/10 bg-white/5 relative grayscale-hover group">
+              <a 
+                href="https://www.google.com/maps/place//@12.8408994,77.6098879,17.25z/data=!4m6!1m5!3m4!2zMTLCsDUwJzI2LjgiTiA3N8KwMzYnMzkuNiJF!8m2!3d12.8407778!4d77.611?hl=en&entry=ttu&g_ep=EgoyMDI2MDUyNS4wIKXMDSoASAFQAw%3D%3D" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="absolute inset-0 z-10"
+                aria-label="Open in Google Maps"
+              ></a>
               <iframe
-                src="https://maps.google.com/maps?q=GMK%20Interior%20Decoration%20works%20%26%20Modular%20Kitchens%20Bangalore&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                src="https://maps.google.com/maps?q=12.8407778,77.611&t=&z=17&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0, minHeight: '400px', display: 'block' }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                className="group-hover:scale-105 transition-transform duration-700"
+                className="group-hover:scale-105 transition-transform duration-700 pointer-events-none"
               ></iframe>
             </div>
           </div>
