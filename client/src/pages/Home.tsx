@@ -104,7 +104,7 @@ Message: ${formData.message || "Not specified"}`;
       <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 px-6 md:px-10 ${scrolled ? "py-4 bg-[#050505]/90 backdrop-blur-md shadow-lg" : "py-6 bg-gradient-to-b from-black/60 to-transparent"}`}>
         <div className="flex items-center justify-between max-w-[1440px] mx-auto">
           <div className="flex items-center gap-3">
-            <img src="/images/logo.jpeg" alt="Gautam Modular Kitchen Logo" className="w-10 h-10 rounded-full object-cover border border-white/20" />
+            <img src="/images/logo.jpeg" alt="Gautam Modular Kitchen Logo" className="w-12 h-12 rounded-full object-cover border border-white/20" />
             <span className="text-lg font-black tracking-tighter uppercase text-white">Gautam Modular Kitchen</span>
           </div>
           <div className="hidden md:flex items-center gap-10">
@@ -114,9 +114,9 @@ Message: ${formData.message || "Not specified"}`;
               </a>
             ))}
           </div>
-          <a href="#contact" className="px-5 py-2 rounded-full bg-white text-black text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-transform">
+          <button onClick={() => { const el = document.getElementById('consultation'); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }} className="px-5 py-2 rounded-full bg-white text-black text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-transform">
             Book a Visit
-          </a>
+          </button>
         </div>
       </nav>
 
@@ -277,7 +277,7 @@ Message: ${formData.message || "Not specified"}`;
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-purple-800 rounded-full opacity-20 blur-[120px] pointer-events-none" />
         <div className="max-w-[90rem] mx-auto relative z-10">
           <div className="mb-16">
-            <h2 className="cinema-heading text-white mb-4">Why Choose<br />Gautam</h2>
+            <h2 className="cinema-heading text-white mb-4">Why Choose<br />GMK</h2>
             <div className="cinema-accent-line" />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -435,8 +435,8 @@ Message: ${formData.message || "Not specified"}`;
         <div className="max-w-[90rem] mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-20">
             <div className="text-[14vw] md:text-[10vw] font-black uppercase tracking-tighter leading-none">
-              FIN.<br />
-              <span style={{ background: "linear-gradient(to right,#e4b4b4,#cbd5e1)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>2026</span>
+              From<br />
+              <span style={{ background: "linear-gradient(to right,#e4b4b4,#cbd5e1)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>2009</span>
             </div>
             <div className="flex flex-col gap-4 md:text-right text-sm">
               <div className="flex items-center md:justify-end gap-3"><Phone size={14} className="text-rose-300" /><span className="text-slate-400"><a href="tel:+919035725303" className="text-slate-400 hover:text-white transition-colors">+91 9035725303</a> / <a href="tel:+918310240952" className="text-slate-400 hover:text-white transition-colors">8310240952</a></span></div>
