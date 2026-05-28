@@ -182,12 +182,12 @@ Message: ${formData.message || "Not specified"}`;
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
             {[
-              { title: "Modular Kitchens", desc: "Custom-designed kitchens with premium finishes", num: "01", images: ["/images/Modular_kitchen1.png", "/images/modular_kitchen2.png", "/images/Modular_kitchen3.jpg", "/images/Modular_kitchen4.jpg"] },
-              { title: "Wardrobes", desc: "Floor-to-ceiling storage solutions", num: "02", images: ["/images/wardrobes1.webp", "/images/wardrobes2.webp", "/images/wardrobes3.jpg", "/images/wardrobes4.jpg"] },
+              { title: "Modular Kitchens", desc: "Custom-designed kitchens with premium finishes", num: "01", images: ["/images/Modular_kitchen1.png", "/images/modular_kitchen2.png", "/images/Modular_kitchennew3.avif", "/images/Modular_kitchen4.jpg"] },
+              { title: "Wardrobes", desc: "Floor-to-ceiling storage solutions", num: "02", images: ["/images/wardrobes1.webp", "/images/wardrobes2.webp", "/images/wardrobesnew3.webp", "/images/wardrobesnew4.jpg"] },
               { title: "TV Units", desc: "Entertainment centers with integrated storage", num: "03", images: ["/images/TVunits1.webp", "/images/Tvunits2.jpeg", "/images/TVunits3.webp", "/images/TVunit.webp"] },
-              { title: "Crockery Units", desc: "Elegant display and storage solutions", num: "04", images: ["/images/crockeryunit1.jpg", "/images/crockeryunt2.jpg", "/images/crockeryunit3.jpg", "/images/crockeryunit4.webp"] },
+              { title: "Crockery Units", desc: "Elegant display and storage solutions", num: "04", images: ["/images/crockeryunit1.jpg", "/images/crockeryuntnew2.jpg", "/images/crockeryunitnew3.jpg", "/images/crockeryunit4.webp"] },
               { title: "Office Furniture", desc: "Professional workspace solutions", num: "05", images: ["/images/officefurniture1.webp", "/images/officefurniture2.webp", "/images/officefurniture3.jpg", "/images/officefurniture4.jpg"] },
-              { title: "False Ceiling", desc: "Modern ceiling designs with integrated lighting", num: "06", images: ["/images/falseceiling1.jpg", "/images/falseceiling2.webp", "/images/falseceiling3.jpg", "/images/falseceiling4.jpg"] },
+              { title: "False Ceiling", desc: "Modern ceiling designs with integrated lighting", num: "06", images: ["/images/falseceiling1.jpg", "/images/falseceiling2.webp", "/images/falseceiling3.jpg", "/images/falseceilingnew4.webp"] },
             ].map((service, idx) => (
               <div key={idx} onClick={() => openServiceModal(service.images, service.title)} className={`group p-8 border border-white/10 bg-[#111111] rounded-2xl hover:border-rose-300/30 transition-all duration-500 cursor-pointer ${idx % 2 === 0 ? "antigravity" : "antigravity-alt"}`}>
                 <p className="text-[10px] font-black uppercase tracking-[0.3em] text-gray-600 mb-6">{service.num}</p>
