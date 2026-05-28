@@ -101,11 +101,11 @@ Message: ${formData.message || "Not specified"}`;
     <div className="min-h-screen bg-[#050505] text-white overflow-x-hidden" style={{ fontFamily: "'General Sans', sans-serif" }}>
 
       {/* ── NAVIGATION ── */}
-      <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 px-6 md:px-10 mix-blend-difference ${scrolled ? "py-4 bg-[#050505]/80 backdrop-blur-md" : "py-6"}`}>
+      <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 px-6 md:px-10 ${scrolled ? "py-4 bg-[#050505]/90 backdrop-blur-md shadow-lg" : "py-6 bg-gradient-to-b from-black/60 to-transparent"}`}>
         <div className="flex items-center justify-between max-w-[1440px] mx-auto">
           <div className="flex items-center gap-3">
-            <div className="w-2.5 h-2.5 bg-rose-500 rounded-full animate-pulse" />
-            <span className="text-lg font-black tracking-tighter uppercase text-white">Gautam Modular</span>
+            <img src="/images/logo.jpeg" alt="Gautam Modular Kitchen Logo" className="w-10 h-10 rounded-full object-cover border border-white/20" />
+            <span className="text-lg font-black tracking-tighter uppercase text-white">Gautam Modular Kitchen</span>
           </div>
           <div className="hidden md:flex items-center gap-10">
             {["#about", "#services", "#gallery", "#process", "#contact"].map((href, i) => (
@@ -343,7 +343,7 @@ Message: ${formData.message || "Not specified"}`;
       </section>
 
       {/* ── CONTACT FORM ── */}
-      <section className="py-24 md:py-40 px-6 md:px-12 bg-[#050505] border-t border-white/5">
+      <section id="consultation" className="py-24 md:py-40 px-6 md:px-12 bg-[#050505] border-t border-white/5">
         <div className="max-w-[90rem] mx-auto">
           <div className="mb-16">
             <h2 className="cinema-heading text-white mb-4">Get Free<br />Consultation</h2>
@@ -439,9 +439,9 @@ Message: ${formData.message || "Not specified"}`;
               <span style={{ background: "linear-gradient(to right,#e4b4b4,#cbd5e1)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>2026</span>
             </div>
             <div className="flex flex-col gap-4 md:text-right text-sm">
-              <div className="flex items-center md:justify-end gap-3"><Phone size={14} className="text-rose-300" /><span className="text-slate-400">+91 9035725303</span></div>
-              <div className="flex items-center md:justify-end gap-3"><Mail size={14} className="text-rose-300" /><span className="text-slate-400">gautammodularkitchen@gmail.com</span></div>
-              <div className="flex items-center md:justify-end gap-3"><MapPin size={14} className="text-rose-300" /><span className="text-slate-400">Bangalore, India</span></div>
+              <div className="flex items-center md:justify-end gap-3"><Phone size={14} className="text-rose-300" /><span className="text-slate-400"><a href="tel:+919035725303" className="text-slate-400 hover:text-white transition-colors">+91 9035725303</a> / <a href="tel:+918310240952" className="text-slate-400 hover:text-white transition-colors">8310240952</a></span></div>
+              <div className="flex items-center md:justify-end gap-3"><Mail size={14} className="text-rose-300" /><a href="https://mail.google.com/mail/?view=cm&to=gautammodularkitchen@gmail.com" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors">gautammodularkitchen@gmail.com</a></div>
+              <div className="flex items-center md:justify-end gap-3"><MapPin size={14} className="text-rose-300" /><span className="text-slate-400 md:text-right">#322, SRY 2, Begur Koppa Road,<br />Mylasyndra, Waddarparlya,<br />Bangalore - 560 068</span></div>
               <div className="flex items-center md:justify-end gap-3"><Clock size={14} className="text-rose-300" /><span className="text-slate-400">Mon–Sat: 10 AM – 7 PM</span></div>
               <div className="grid grid-cols-2 gap-2 mt-4">
                 {["Services", "Gallery", "About Us", "Contact"].map((l, i) => (

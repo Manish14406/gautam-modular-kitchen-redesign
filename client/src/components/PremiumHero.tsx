@@ -1,6 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight } from "lucide-react";
 
+function smoothScrollTo(id: string) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
 export default function PremiumHero() {
   const [isLoaded, setIsLoaded] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -103,19 +108,19 @@ export default function PremiumHero() {
           Crafted For<br />Living
         </h2>
         <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a
-            href="#contact"
+          <button
+            onClick={() => smoothScrollTo("consultation")}
             className="group relative px-8 py-4 bg-white text-black text-[10px] font-black uppercase tracking-[0.2em] overflow-hidden transition-all duration-300 hover:scale-105 inline-flex items-center gap-3"
           >
             <span>Get Free Consultation</span>
             <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-          </a>
-          <a
-            href="#gallery"
+          </button>
+          <button
+            onClick={() => smoothScrollTo("gallery")}
             className="px-8 py-4 border border-white/20 text-white text-[10px] font-black uppercase tracking-[0.2em] hover:border-white transition-all duration-300 inline-block"
           >
             View Projects
-          </a>
+          </button>
         </div>
       </div>
 
